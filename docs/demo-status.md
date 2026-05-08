@@ -23,6 +23,7 @@ The demo target is a stable vertical slice:
 - [x] User-facing game copy is readable Traditional Chinese
 - [x] Demo Assist button can trigger a wild battle on demand
 - [x] Demo Guide button can jump to the next quest interaction point
+- [x] Demo Route panel shows the full walkthrough path and current stage
 - [ ] Full manual walkthrough of the entire quest chain on a running client
 - [x] Final polish pass on copy and HUD presentation
 

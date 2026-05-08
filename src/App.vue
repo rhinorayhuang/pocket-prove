@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import BattleMenu from "./components/BattleMenu.vue";
+import DemoRoutePanel from "./components/DemoRoutePanel.vue";
 import DialogBox from "./components/DialogBox.vue";
 import PartyPanel from "./components/PartyPanel.vue";
 import QuestPanel from "./components/QuestPanel.vue";
@@ -69,6 +70,8 @@ const isDemoComplete = computed(() => questStage.value >= 11);
         :step-count="stepCount"
         :wins="wins"
       />
+
+      <DemoRoutePanel :current-stage="questStage" />
 
       <article v-if="isDemoComplete" class="completion-card">
         <p class="completion-label">Demo Clear</p>
