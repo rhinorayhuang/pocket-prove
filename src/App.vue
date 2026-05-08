@@ -106,6 +106,8 @@ const isDemoComplete = computed(() => questStage.value >= 11);
         />
         <BattleMenu
           v-else-if="scene === 'battle' && battle.awaitingChoice && battle.enemy"
+          :partner="partner"
+          :enemy="battle.enemy"
           :choices="battleChoices"
           :selected-index="battle.selectedIndex"
           @select="selectBattleAction"
