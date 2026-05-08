@@ -38,6 +38,22 @@ The public URL will be:
 https://<user>.github.io/<repo>/
 ```
 
+For this repository, the expected URL after Pages is enabled is:
+
+```text
+https://rhinorayhuang.github.io/pocket-prove/
+```
+
+## Current Deployment Status
+
+As of 2026-05-08:
+
+- latest pushed commit: `20569c6 Add demo guide navigation`
+- GitHub Actions run `Deploy GitHub Pages` completed successfully
+- GitHub Pages API still returns `404 Not Found`
+
+That `404` means the repository likely still needs `Settings -> Pages -> Source -> GitHub Actions` enabled in the GitHub UI before the public URL becomes active.
+
 ## Local Verification
 
 ```bash

@@ -41,6 +41,8 @@ const battleChoices = computed(() => [
     description: "降低本回合受到的傷害。"
   }
 ]);
+
+const isDemoComplete = computed(() => questStage.value >= 11);
 </script>
 
 <template>
@@ -67,6 +69,12 @@ const battleChoices = computed(() => [
         :step-count="stepCount"
         :wins="wins"
       />
+
+      <article v-if="isDemoComplete" class="completion-card">
+        <p class="completion-label">Demo Clear</p>
+        <h2>溪橋外勤測試完成</h2>
+        <p>你已經完成目前版本的主線閉環。可以重新開始、自由探索，或用 Demo Guide 重播關鍵節點。</p>
+      </article>
 
       <div class="demo-actions">
         <button class="assist-button primary" type="button" @click="jumpToNextObjective">Demo Guide：前往下一步</button>
@@ -224,6 +232,48 @@ h1 {
   padding-left: 18px;
   color: #405537;
   line-height: 1.8;
+}
+
+.completion-card {
+  margin-top: 18px;
+  border: 2px solid rgba(35, 51, 27, 0.24);
+  border-radius: 22px;
+  padding: 18px;
+  color: #f7ffe9;
+  background:
+    radial-gradient(circle at top right, rgba(255, 237, 165, 0.32), transparent 34%),
+    linear-gradient(135deg, #345929 0%, #1f3519 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.06);
+}
+
+.completion-label,
+.completion-card h2,
+.completion-card p {
+  margin: 0;
+}
+
+.completion-label,
+.completion-card h2 {
+  font-family: "Courier New", "Microsoft JhengHei", monospace;
+}
+
+.completion-label {
+  color: #f4d783;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.completion-card h2 {
+  margin-top: 8px;
+  font-size: 1.25rem;
+}
+
+.completion-card p:last-child {
+  margin-top: 10px;
+  color: #dceec8;
+  line-height: 1.7;
 }
 
 .game-column {
