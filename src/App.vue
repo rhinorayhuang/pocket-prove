@@ -25,7 +25,8 @@ const {
   confirm,
   selectBattleAction,
   resetAdventure,
-  forceWildEncounter
+  forceWildEncounter,
+  jumpToNextObjective
 } = usePocketGroveGame(canvasRef);
 
 const battleChoices = computed(() => [
@@ -68,6 +69,7 @@ const battleChoices = computed(() => [
       />
 
       <div class="demo-actions">
+        <button class="assist-button primary" type="button" @click="jumpToNextObjective">Demo Guide：前往下一步</button>
         <button class="reset-button" type="button" @click="resetAdventure">重新開始</button>
         <button class="assist-button" type="button" @click="forceWildEncounter">Demo Assist：觸發野外戰鬥</button>
       </div>
@@ -209,6 +211,12 @@ h1 {
   color: #20301a;
   background: linear-gradient(180deg, #f5e8b4 0%, #d8bd62 100%);
   border: 2px solid rgba(35, 51, 27, 0.24);
+}
+
+.assist-button.primary {
+  color: #f8fff0;
+  background: linear-gradient(180deg, #6d8c44 0%, #365725 100%);
+  border-color: rgba(35, 51, 27, 0.34);
 }
 
 .tips {

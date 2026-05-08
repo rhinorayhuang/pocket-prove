@@ -247,6 +247,52 @@ export function usePocketGroveGame(canvasRef: Ref<HTMLCanvasElement | null>) {
     startWildEncounter();
   }
 
+  function placePlayer(mapId: string, position: { x: number; y: number }, facing: DirectionName) {
+    state.currentMap = getMapById(mapId);
+    state.player.position = { ...position };
+    state.player.facing = facing;
+  }
+
+  function jumpToNextObjective() {
+    if (state.dialog.visible || scene.value === "battle") {
+      return;
+    }
+
+    if (!state.flags.metResearcher) {
+      placePlayer("dawnbud-outskirts", { x: 13, y: 4 }, "up");
+    } else if (!state.flags.firstBattleWon) {
+      placePlayer("dawnbud-outskirts", { x: 7, y: 2 }, "right");
+      startWildEncounter();
+      return;
+    } else if (!state.flags.visitedTownSquare) {
+      placePlayer("dawnbud-outskirts", { x: 8, y: 9 }, "down");
+    } else if (!state.flags.enteredLab) {
+      placePlayer("dawnbud-town-square", { x: 5, y: 5 }, "up");
+    } else if (!state.flags.beatRoadTrainer) {
+      placePlayer("sunpath-road", { x: 10, y: 8 }, "up");
+    } else if (!state.flags.reportedToLab) {
+      placePlayer("dawnbud-research-lab", { x: 10, y: 5 }, "up");
+    } else if (!state.flags.reachedBrooksideOutpost) {
+      placePlayer("sunpath-road", { x: 13, y: 7 }, "right");
+    } else if (!state.flags.receivedOutpostBriefing) {
+      placePlayer("brookside-outpost", { x: 10, y: 6 }, "up");
+    } else if (!state.flags.reachedWindfallBridge) {
+      placePlayer("brookside-outpost", { x: 8, y: 2 }, "up");
+    } else if (!state.flags.inspectedWindfallBlockade) {
+      placePlayer("windfall-bridge-trail", { x: 10, y: 3 }, "up");
+    } else if (!state.flags.reportedBridgeStatus) {
+      placePlayer("brookside-outpost", { x: 10, y: 6 }, "up");
+    } else {
+      openDialog("Demo", ["這段 demo 已完成。你可以重新開始，或繼續自由探索。"]);
+      render();
+      return;
+    }
+
+    syncQuest();
+    persist();
+    render();
+  }
+
   function startTrainerBattle(trainerId: string) {
     const trainer = getTrainerById(trainerId);
     state.battle.enemy = cloneCreature(trainer.creature);
@@ -611,6 +657,7 @@ export function usePocketGroveGame(canvasRef: Ref<HTMLCanvasElement | null>) {
     confirm,
     selectBattleAction,
     resetAdventure,
-    forceWildEncounter
+    forceWildEncounter,
+    jumpToNextObjective
   };
 }

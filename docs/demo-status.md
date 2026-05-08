@@ -22,6 +22,7 @@ The demo target is a stable vertical slice:
 - [x] Forwarded-port Lunel flow exists on port `4177`
 - [x] User-facing game copy is readable Traditional Chinese
 - [x] Demo Assist button can trigger a wild battle on demand
+- [x] Demo Guide button can jump to the next quest interaction point
 - [ ] Full manual walkthrough of the entire quest chain on a running client
 - [x] Final polish pass on copy and HUD presentation
 
@@ -58,3 +59,4 @@ npm run lunel:forward
 - The active forwarded preview is currently serving on `http://localhost:4177`.
 - Keep the laptop awake while using Lunel from a phone.
 - If Windows asks for firewall access, allow Node on private networks or the phone preview will fail.
+- Use `Demo Guide：前往下一步` during live demos if the player gets lost or needs to skip travel time.
