@@ -115,6 +115,7 @@ npm run build
 - mobile/demo scripts were added to `package.json`
 - channel and mobile preview docs were added under `docs/`
 - user-facing demo copy has been cleaned up to readable Traditional Chinese
+- Demo Assist can trigger a wild battle on demand
 - preview server is running on `http://localhost:4177`
 - Lunel forward session exposes port `4177`
 

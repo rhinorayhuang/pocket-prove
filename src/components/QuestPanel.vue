@@ -3,6 +3,7 @@ defineProps<{
   sceneLabel: string;
   areaName: string;
   questTitle: string;
+  questStage: number;
   objective: string;
   metResearcher: boolean;
 }>();
@@ -22,7 +23,7 @@ defineProps<{
     </div>
 
     <article class="quest-card">
-      <p class="card-title">{{ questTitle }}</p>
+      <p class="card-title">{{ questTitle }} #{{ questStage }}</p>
       <p>{{ objective }}</p>
     </article>
 

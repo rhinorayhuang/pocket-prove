@@ -13,6 +13,7 @@ const {
   sceneLabel,
   areaName,
   questTitle,
+  questStage,
   objective,
   partner,
   battle,
@@ -23,7 +24,8 @@ const {
   move,
   confirm,
   selectBattleAction,
-  resetAdventure
+  resetAdventure,
+  forceWildEncounter
 } = usePocketGroveGame(canvasRef);
 
 const battleChoices = computed(() => [
@@ -54,6 +56,7 @@ const battleChoices = computed(() => [
         :scene-label="sceneLabel"
         :area-name="areaName"
         :quest-title="questTitle"
+        :quest-stage="questStage"
         :objective="objective"
         :met-researcher="metResearcher"
       />
@@ -64,7 +67,10 @@ const battleChoices = computed(() => [
         :wins="wins"
       />
 
-      <button class="reset-button" type="button" @click="resetAdventure">重新開始</button>
+      <div class="demo-actions">
+        <button class="reset-button" type="button" @click="resetAdventure">重新開始</button>
+        <button class="assist-button" type="button" @click="forceWildEncounter">Demo Assist：觸發野外戰鬥</button>
+      </div>
 
       <ul class="tips">
         <li>鍵盤使用 `W A S D` 或方向鍵移動。</li>
@@ -153,7 +159,8 @@ const battleChoices = computed(() => [
 .eyebrow,
 h1,
 .action-button,
-.reset-button {
+.reset-button,
+.assist-button {
   font-family: "Courier New", "Microsoft JhengHei", monospace;
 }
 
@@ -178,15 +185,30 @@ h1 {
   line-height: 1.7;
 }
 
-.reset-button {
+.demo-actions {
+  display: grid;
+  gap: 10px;
   margin-top: 18px;
+}
+
+.reset-button,
+.assist-button {
   width: 100%;
   border: 0;
   border-radius: 999px;
   padding: 14px 18px;
+  cursor: pointer;
+}
+
+.reset-button {
   color: #f5ffe9;
   background: linear-gradient(180deg, #486c36 0%, #294720 100%);
-  cursor: pointer;
+}
+
+.assist-button {
+  color: #20301a;
+  background: linear-gradient(180deg, #f5e8b4 0%, #d8bd62 100%);
+  border: 2px solid rgba(35, 51, 27, 0.24);
 }
 
 .tips {

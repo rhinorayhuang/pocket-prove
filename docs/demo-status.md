@@ -21,6 +21,7 @@ The demo target is a stable vertical slice:
 - [x] Lunel script exists for QR-based mobile access
 - [x] Forwarded-port Lunel flow exists on port `4177`
 - [x] User-facing game copy is readable Traditional Chinese
+- [x] Demo Assist button can trigger a wild battle on demand
 - [ ] Full manual walkthrough of the entire quest chain on a running client
 - [x] Final polish pass on copy and HUD presentation
 

@@ -105,6 +105,7 @@ export function usePocketGroveGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       : state.currentMap.name
   );
   const questTitle = computed(() => state.quest.title);
+  const questStage = computed(() => state.quest.stage);
   const objective = computed(() => state.quest.objective);
   const metResearcher = computed(() => state.flags.metResearcher);
   const wins = computed(() => state.flags.wins);
@@ -236,6 +237,14 @@ export function usePocketGroveGame(canvasRef: Ref<HTMLCanvasElement | null>) {
       }
     );
     render();
+  }
+
+  function forceWildEncounter() {
+    if (scene.value !== "world" || state.dialog.visible) {
+      return;
+    }
+
+    startWildEncounter();
   }
 
   function startTrainerBattle(trainerId: string) {
@@ -590,6 +599,7 @@ export function usePocketGroveGame(canvasRef: Ref<HTMLCanvasElement | null>) {
     sceneLabel,
     areaName,
     questTitle,
+    questStage,
     objective,
     partner: state.partner,
     battle: state.battle,
@@ -600,6 +610,7 @@ export function usePocketGroveGame(canvasRef: Ref<HTMLCanvasElement | null>) {
     move,
     confirm,
     selectBattleAction,
-    resetAdventure
+    resetAdventure,
+    forceWildEncounter
   };
 }
